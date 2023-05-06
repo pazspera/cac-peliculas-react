@@ -5,8 +5,8 @@ function App() {
   return (
     <div>
       <header className="App-header"></header>
-      <main>
-        <MovieGrid/>
+      <main className="container my-5">
+        <MovieGrid />
       </main>
     </div>
   );
