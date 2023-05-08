@@ -13,10 +13,12 @@ export const MovieGrid = () => {
   }, []);
 
   return (
-    <section className="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
-      {movies.map((movie) => (
-        <MovieCard key={movie.id} movie={movie} />
-      ))}
-    </section>
+    <main className="container my-5">
+      <section className="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
+        {movies.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
+      </section>
+    </main>
   );
 };

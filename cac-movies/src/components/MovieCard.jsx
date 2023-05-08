@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 export const MovieCard = ({ movie }) => {
   const imgURL = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+  /* const backdropURL = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`; */
   return (
     <div className="col">
       <Link to={`/movie/${movie.id}`}>

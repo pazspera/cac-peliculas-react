@@ -21,12 +21,10 @@ function App() {
           </div>
         </nav>
       </header>
-      <main className="container my-5">
-        <Routes>
-          <Route path="/" element={<LandingPage />}></Route>
-          <Route path="movie/:movieId" element={<MovieDetail />}></Route>
-        </Routes>
-      </main>
+      <Routes>
+        <Route path="/" element={<LandingPage />}></Route>
+        <Route path="movie/:movieId" element={<MovieDetail />}></Route>
+      </Routes>
     </BrowserRouter>
   );
 }
