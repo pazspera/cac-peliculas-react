@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { LandingPage } from "./views/LandingPage";
 import { MovieDetail } from "./views/MovieDetail";
+import { GenreList } from "./components/GenreList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faXmarksLines } from "@fortawesome/free-solid-svg-icons";
@@ -24,6 +25,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />}></Route>
         <Route path="movie/:movieId" element={<MovieDetail />}></Route>
+        <Route path="/:genreId/movie/list" element={<GenreList />}></Route>
       </Routes>
     </BrowserRouter>
   );

@@ -1,12 +1,13 @@
 import { get } from "../utils/httpClient.js";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+
 import "./MovieDetail.css";
 
 export const MovieDetail = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
-  const [keywords, setKeywords] = useState([]);
+  /* const [keywords, setKeywords] = useState([]); */
   const [recomendations, setRecomendations] = useState([]);
 
   const usCurrencyFormatter = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 0 });
@@ -21,11 +22,11 @@ export const MovieDetail = () => {
 
   /* console.log(movie); */
 
-  useEffect(() => {
+  /* useEffect(() => {
     get(`/movie/${movieId}/keywords`).then((data) => {
       setKeywords(data);
     });
-  }, [movieId]);
+  }, [movieId]); */
 
   /* console.log(keywords); */
 
@@ -59,9 +60,9 @@ export const MovieDetail = () => {
             <p className="tagline">{movie.tagline}</p>
             {/* {movie.genres.map((genre) => genre.name).join(", ")} */}
             {movie.genres.map((genre) => (
-              <span className="badge bg-secondary me-2 mb-3" key={genre.id}>
-                {genre.name}
-              </span>
+              <Link to={`/genre/27-horror/movie/list`} key={genre.id}>
+                <span className="badge bg-secondary me-2 mb-3">{genre.name}</span>
+              </Link>
             ))}
             <p>
               <strong>Duration: </strong>
@@ -84,17 +85,20 @@ export const MovieDetail = () => {
               Movie's website
             </a>
           </div>
+
           <div className="col-12 mt-2">
             <h3>Recomendations</h3>
             <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
               {recomendations.map((recomendation) => (
                 <div className="col" key={recomendation.id}>
-                  <div className="card h-100">
-                    <img src={`https://image.tmdb.org/t/p/w500/${recomendation.backdrop_path}`} className="card-img-top" alt={recomendation.title} />
-                    <div className="card-body">
-                      <p className="card-text">{recomendation.title}</p>
+                  <Link to={`/movie/${recomendation.id}`}>
+                    <div className="card h-100">
+                      <img src={`https://image.tmdb.org/t/p/w500/${recomendation.backdrop_path}`} className="card-img-top" alt={recomendation.title} />
+                      <div className="card-body">
+                        <p className="card-text">{recomendation.title}</p>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               ))}
             </div>
