@@ -13,7 +13,7 @@ export const MovieGrid = () => {
   }, []);
 
   return (
-    <section className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+    <section className="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
       {movies.map((movie) => (
         <MovieCard key={movie.id} movie={movie} />
       ))}
