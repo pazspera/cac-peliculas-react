@@ -32,7 +32,9 @@ export const MovieDetail = () => {
 
   useEffect(() => {
     get(`/movie/${movieId}/recommendations`).then((data) => {
-      setRecomendations(data.results.slice(0, 4));
+      // Saves only recommendations with image
+      const recommendationsWithPicture = data.results.filter((movie) => movie.backdrop_path !== null);
+      setRecomendations(recommendationsWithPicture.slice(0, 4));
     });
   }, [movieId]);
 
