@@ -60,7 +60,6 @@ export const MovieDetail = () => {
               {movie.title} ({movie.release_date.substring(0, 4)})
             </h1>
             <p className="tagline">{movie.tagline}</p>
-            {/* {movie.genres.map((genre) => genre.name).join(", ")} */}
             {movie.genres.map((genre) => (
               <Link to={`/genre/27-horror/movie/list`} key={genre.id}>
                 <span className="badge bg-secondary me-2 mb-3">{genre.name}</span>
@@ -75,14 +74,22 @@ export const MovieDetail = () => {
               {movie.overview}
             </p>
             <div>
-              <p>
-                <strong>Budget: </strong>
-                {usCurrencyFormatter.format(movie.budget)}
-              </p>
-              <p>
-                <strong>Revenue: </strong> {usCurrencyFormatter.format(movie.revenue)}
-              </p>
+              {/* Conditional rendering on budget and revenue */}
+              {movie.budget > 0 && movie.revenue > 0 ? (
+                <>
+                  <p>
+                    <strong>Budget: </strong>
+                    {usCurrencyFormatter.format(movie.budget)}
+                  </p>
+                  <p>
+                    <strong>Revenue: </strong> {usCurrencyFormatter.format(movie.revenue)}
+                  </p>
+                </>
+              ) : (
+                <></>
+              )}
             </div>
+
             <a href={movie.homepage} target="_blank" rel="noreferrer">
               Movie's website
             </a>
