@@ -31,7 +31,7 @@ export const MovieDetail = () => {
   /* console.log(keywords); */
 
   useEffect(() => {
-    get(`/movie/${movieId}/recommendations`).then((data) => {
+    get(`/movie/${movieId}/similar`).then((data) => {
       // Saves only recommendations with image
       const recommendationsWithPicture = data.results.filter((movie) => movie.backdrop_path !== null);
       setRecomendations(recommendationsWithPicture.slice(0, 4));
@@ -42,6 +42,8 @@ export const MovieDetail = () => {
   if (!movie) {
     return null;
   }
+
+  console.log(movie.genres);
 
   const imgURL = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
   /* const backdropURL = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`; */
@@ -61,7 +63,7 @@ export const MovieDetail = () => {
             </h1>
             <p className="tagline">{movie.tagline}</p>
             {movie.genres.map((genre) => (
-              <Link to={`/genre/27-horror/movie/list`} key={genre.id}>
+              <Link to={`/genre/${genre.id}-${genre.name}/movie/list`} key={genre.id}>
                 <span className="badge bg-secondary me-2 mb-3">{genre.name}</span>
               </Link>
             ))}

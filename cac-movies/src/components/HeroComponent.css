@@ -1,0 +1,12 @@
+.hero {
+  background-image: url(../assets/hero_bg.jpg);
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero__title,
+.hero__text {
+  color: #fff;
+}

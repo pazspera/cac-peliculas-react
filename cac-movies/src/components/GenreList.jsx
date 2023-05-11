@@ -10,5 +10,5 @@ export const GenreList = () => {
     });
   });
 
-  console.log(genres);
+  console.log("I'm in genre");
 };

@@ -1,5 +1,11 @@
 import { MovieGrid } from "../components/MovieGrid";
+import { HeroComponent } from "../components/HeroComponent";
 
 export const LandingPage = () => {
-  return <MovieGrid />;
+  return (
+    <>
+      <HeroComponent />
+      <MovieGrid />
+    </>
+  );
 };
