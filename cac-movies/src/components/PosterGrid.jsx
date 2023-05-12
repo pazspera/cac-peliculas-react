@@ -9,7 +9,7 @@ export const PosterGrid = (props) => {
   useEffect(() => {
     get(route).then((data) => {
       console.log(data);
-      const selectedResults = data.results.slice(12, 18);
+      const selectedResults = data.results.slice(6, 12);
       console.log("selected results", selectedResults);
       setMovies(selectedResults);
     });
