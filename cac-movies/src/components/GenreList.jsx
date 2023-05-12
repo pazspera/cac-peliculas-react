@@ -11,4 +11,5 @@ export const GenreList = () => {
   });
 
   console.log("I'm in genre");
+  console.log(genres);
 };
