@@ -14,7 +14,6 @@ export const PosterGrid = (props) => {
       setMovies(selectedResults);
     });
   }, []);
-  console.log(movies);
 
   return (
     <section className="container my-5">

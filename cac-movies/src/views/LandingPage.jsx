@@ -6,6 +6,7 @@ export const LandingPage = () => {
   return (
     <>
       <HeroComponent />
+      <PosterGrid route="/movie/now_playing" title="Currently on cinemas" />
       <MovieGrid />
       <PosterGrid route="/movie/upcoming" title="Upcoming Releases" />
     </>
