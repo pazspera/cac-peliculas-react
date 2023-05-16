@@ -1,0 +1,28 @@
+.movie-card,
+.card-img-top,
+.card-body {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.movie-card .card-body {
+  padding: 0.75rem;
+  background-color: var(--black);
+}
+
+.card-title {
+  color: var(--white);
+  text-decoration: none !important;
+}
+
+/* This removes text decoration on card-title */
+.movie-card a {
+  color: var(--white);
+  text-decoration: none !important;
+}
+
+.movie-card:hover {
+  color: var(--primary-medium);
+}

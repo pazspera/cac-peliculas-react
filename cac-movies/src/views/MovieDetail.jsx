@@ -102,8 +102,8 @@ export const MovieDetail = () => {
             <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
               {recomendations.map((recomendation) => (
                 <div className="col" key={recomendation.id}>
-                  <Link to={`/movie/${recomendation.id}`}>
-                    <div className="card h-100">
+                  <Link to={`/movie/${recomendation.id}`} style={{ textDecoration: "none", color: "var(--white)" }}>
+                    <div className="card h-100 movie-card">
                       <img src={`https://image.tmdb.org/t/p/w500/${recomendation.backdrop_path}`} className="card-img-top" alt={recomendation.title} />
                       <div className="card-body">
                         <p className="card-text">{recomendation.title}</p>
