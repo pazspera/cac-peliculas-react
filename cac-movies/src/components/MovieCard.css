@@ -26,3 +26,7 @@
 .movie-card:hover {
   color: var(--primary-medium);
 }
+
+.card-text {
+  font-size: var(--size-7);
+}

@@ -18,7 +18,7 @@ export const RecommendedCardGrid = () => {
       <div className="container my-5 ">
         <div className="row">
           <div className="col my-3">
-            <h2>Our Queen Bee’s Picks</h2>
+            <h2>Our Queen Bee’s Latest Picks</h2>
           </div>
         </div>
         <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">

@@ -9,7 +9,7 @@ export const HeroComponent = () => {
           <h1 className="hero__title">Buzzing for a movie night?</h1>
           <p className="hero__text">We have you covered</p>
           <Link>
-            <button className="btn btn-primary">Explore the hive</button>
+            <button className="btn btn-movie">Explore the hive</button>
           </Link>
         </div>
       </div>

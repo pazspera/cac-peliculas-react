@@ -91,7 +91,7 @@ export const MovieDetail = () => {
               )}
             </div>
 
-            <a href={movie.homepage} target="_blank" rel="noreferrer">
+            <a href={movie.homepage} target="_blank" rel="noreferrer" className="btn btn-movie">
               Movie's website
             </a>
           </div>
