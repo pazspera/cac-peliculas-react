@@ -32,6 +32,7 @@ export const MovieDetail = () => {
 
   useEffect(() => {
     get(`/movie/${movieId}/similar`).then((data) => {
+      console.log(data.results);
       // Saves only recommendations with image
       const recommendationsWithPicture = data.results.filter((movie) => movie.backdrop_path !== null);
       setRecomendations(recommendationsWithPicture.slice(0, 4));
@@ -63,9 +64,7 @@ export const MovieDetail = () => {
             </h1>
             <p className="tagline">{movie.tagline}</p>
             {movie.genres.map((genre) => (
-              <Link to={`/genre/${genre.id}-${genre.name}/movie/list`} key={genre.id}>
-                <span className="badge bg-secondary me-2 mb-3">{genre.name}</span>
-              </Link>
+              <span className="badge bg-secondary me-2 mb-3">{genre.name}</span>
             ))}
             <p>
               <strong>Duration: </strong>
