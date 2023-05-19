@@ -28,6 +28,7 @@ export const MovieDetail = () => {
       setDirection(direction);
     });
   }, [movieId]);
+  console.log("direction", direction);
 
   useEffect(() => {
     get(`/movie/${movieId}/credits`).then((data) => {
@@ -80,11 +81,22 @@ export const MovieDetail = () => {
             <p>{movie.overview}</p>
             <p>
               <strong>Direction: </strong>
-              {direction.map((credit) => (
+              {direction.length > 1
+                ? direction.map((credit) => (
+                    <span key={credit.id} className="me-2">
+                      {credit.name} - 
+                    </span>
+                  ))
+                : direction.map((credit) => (
+                    <span key={credit.id} className="me-2">
+                      {credit.name}
+                    </span>
+                  ))}
+              {/* {direction.map((credit) => (
                 <span key={credit.id} className="me-2">
                   {credit.name}
                 </span>
-              ))}
+              ))} */}
             </p>
             <div>
               {/* Conditional rendering on budget and revenue */}
