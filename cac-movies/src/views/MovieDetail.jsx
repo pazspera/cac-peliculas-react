@@ -9,7 +9,7 @@ export const MovieDetail = () => {
   const [movie, setMovie] = useState(null);
   /* const [keywords, setKeywords] = useState([]); */
   const [recomendations, setRecomendations] = useState([]);
-  const [credits, setCredits] = useState([]);
+  const [topCast, setTopCast] = useState([]);
   const [direction, setDirection] = useState([]);
 
   const usCurrencyFormatter = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 0 });
@@ -24,22 +24,21 @@ export const MovieDetail = () => {
 
   useEffect(() => {
     get(`/movie/${movieId}/credits`).then((data) => {
-      setCredits(data);
+      const direction = data.crew.filter((crew) => crew.job === "Director");
+      console.log("director", direction);
+      setDirection(direction);
     });
   }, [movieId]);
 
- /*  useEffect(() => {
-    let direction = credits.crew.filter((crew) => crew.job === "Director");
-    setDirection(direction);
-  }, [movieId]); */
-
-  console.log(direction);
-  /* console.log("credits", credits);
-  console.log("crew", credits.crew);
-  console.log("cast", credits.cast); */
-
-  // job "Director"
-  // job: "Writer"
+  useEffect(() => {
+    get(`/movie/${movieId}/credits`).then((data) => {
+      const sortedTopCast = data.cast.sort((a, b) => (a.order > b.order ? 1 : -1));
+      console.log(sortedTopCast);
+      const sortedTopCastNoPicture = sortedTopCast.filter((actor) => actor.profile_path !== null);
+      console.log(sortedTopCastNoPicture)
+      setTopCast(sortedTopCastNoPicture.slice(0, 6));
+    });
+  }, [movieId]);
 
   useEffect(() => {
     get(`/movie/${movieId}/similar`).then((data) => {
@@ -54,15 +53,14 @@ export const MovieDetail = () => {
     return null;
   }
 
-  console.log(recomendations);
-
   const imgURL = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
   /* const backdropURL = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`; */
 
   return (
     <>
-      <main className="container my-5 pt-3">
-        <div className="row">
+      <main className="container my-5">
+        {/* Main data */}
+        <div className="row my-4">
           {/* For backdropURL */}
           {/* <div className="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-0 mb-4"> */}
           <div className="col-12 col-md-6 col-lg-3  mb-4">
@@ -82,9 +80,14 @@ export const MovieDetail = () => {
               <strong>Runtime: </strong>
               {movie.runtime}min
             </p>
+            <p>{movie.overview}</p>
             <p>
-              <strong>Synopsis: </strong>
-              {movie.overview}
+              <strong>Direction: </strong>
+              {direction.map((credit) => (
+                <span key={credit.id} className="me-2">
+                  {credit.name}
+                </span>
+              ))}
             </p>
             <div>
               {/* Conditional rendering on budget and revenue */}
@@ -113,8 +116,24 @@ export const MovieDetail = () => {
             )}
           </div>
         </div>
-        <div className="row">
-          {/* Conditional rendering for recomendations */}
+        {/* Cast */}
+        <div className="row my-4">
+          <div className="col-12">
+            <h3>Top Cast</h3>
+            <div className="row row-cols-3 row-cols-sm-4 row-cols-md-6 row-cols-lg-12 g-4">
+              {topCast.map((actor) => (
+                <div className="col" key={actor.id}>
+                  <img src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`} className="card-img-top" alt={actor.name} />
+                  <div className="card-body">
+                    <p className="card-text">{actor.name}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        {/* Conditional rendering for recomendations */}
+        <div className="row my-4">
           {recomendations.length > 0 ? (
             <div className="col-12 mt-4">
               <h3>Recomendations</h3>
