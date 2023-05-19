@@ -7,6 +7,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faXmarksLines } from "@fortawesome/free-solid-svg-icons";
 import "./App.css";
 import { FooterComponent } from "./components/FooterComponent";
+import { ClassicMovies } from "./views/ClassicMovies";
 
 library.add(faXmarksLines);
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<LandingPage />}></Route>
         <Route path="movie/:movieId" element={<MovieDetail />}></Route>
         <Route path="genre/:genreId/movie/list" element={<GenreList />}></Route>
+        <Route path="/classics" element={<ClassicMovies />}></Route>
       </Routes>
       <FooterComponent />
     </BrowserRouter>

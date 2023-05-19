@@ -8,7 +8,7 @@ export const HeroComponent = () => {
         <div className="row">
           <h1 className="hero__title">Buzzing for a movie night?</h1>
           <p className="hero__text">We have you covered</p>
-          <Link>
+          <Link to={"/classics"}>
             <button className="btn btn-movie">Explore the hive</button>
           </Link>
         </div>

@@ -25,7 +25,6 @@ export const MovieDetail = () => {
   useEffect(() => {
     get(`/movie/${movieId}/credits`).then((data) => {
       const direction = data.crew.filter((crew) => crew.job === "Director");
-      console.log("director", direction);
       setDirection(direction);
     });
   }, [movieId]);
@@ -33,9 +32,7 @@ export const MovieDetail = () => {
   useEffect(() => {
     get(`/movie/${movieId}/credits`).then((data) => {
       const sortedTopCast = data.cast.sort((a, b) => (a.order > b.order ? 1 : -1));
-      console.log(sortedTopCast);
       const sortedTopCastNoPicture = sortedTopCast.filter((actor) => actor.profile_path !== null);
-      console.log(sortedTopCastNoPicture)
       setTopCast(sortedTopCastNoPicture.slice(0, 6));
     });
   }, [movieId]);
